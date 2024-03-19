@@ -1,12 +1,15 @@
-extends layout.pug 
-
-block title 
-    title Log in success 
-
-block body
-    h1 Welcome to the app!
-    p You are now logged in.
-    a(href="/logout") Logout
-    
-
-    
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="dashboard.css")
+        title Document
+    body 
+        main 
+            div.navbar
+                h1.logo Dashboard 
+            div.dashboard 
+                h1 Welcome to the dashboard
+                h3 New features can be seen in future updates
+                a(href="/logout") Logout
