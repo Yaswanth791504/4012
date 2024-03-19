@@ -1,0 +1,26 @@
+extends layout.pug 
+
+block title 
+    title Sign Up
+
+block body 
+    h1.loginTitle Sign Up
+    form.loginForm(action="/api/auth/signup", method="POST")
+        .loginInputDiv 
+            label(for="name") Name
+            input.inputField(type="text", name="name", id="name", required)
+        div.loginInputDiv
+            label(for="email") Email
+            input.inputField(type="email", name="email", id="email", required)
+        div.loginInputDiv
+            label(for="password") Password
+            input.inputField(type="password", name="password", id="password", required)
+        .loginInputDiv 
+            label(for="passwordConformation") Confirm Password
+            input.inputField(type="password", name="passwordConformation", id="passwordConformation", required)
+        div.loginInputDiv
+            button.Button(type="submit") Sign Up
+    div.registerDiv
+        p.register 
+            | Have an account?
+            a.link(href="/login") Login

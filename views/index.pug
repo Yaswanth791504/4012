@@ -1,0 +1,20 @@
+extends layout.pug 
+
+block title 
+    title Log In
+
+block body
+    h1.loginTitle Login
+    form.loginForm(action="/api/auth/login", method="POST")
+        div.loginInputDiv
+            label(for="email") Email
+            input.inputField(type="email", name="email", id="email", required)
+        div.loginInputDiv
+            label(for="password") Password
+            input.inputField(type="password", name="password", id="password", required)
+        div.loginInputDiv
+            button.Button(type="submit") Log in
+    div.registerDiv
+        p.register 
+            | Don't have an account? 
+            a.link(href="/signup") Register
