@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<form action="" class="trainForm">
+    <input type="text" name="trainName" class="trainName" placeholder="Search for the train">
+    <button type="submit">Search</button>
+</form>
+
+
+<h1 class="source"></h1>
+<h1 class="destination"></h1>
+
+
+
+<body>
+
+</body>
+<script>
+    const trainForm = document.querySelector('.trainForm');
+    const source = document.querySelector('.source');
+    const destination = document.querySelector('.destination');
+
+    const url = 'https://indian-railway-irctc.p.rapidapi.com/getTrainId?trainno=1205';
+    const options = {
+        method: 'GET',
+        headers: {
+            'x-rapid-api': 'rapid-api-database',
+            'X-RapidAPI-Key': '6aa09b9994msh641cb71fce4aa95p1ea600jsn2e0301b73956',
+            'X-RapidAPI-Host': 'indian-railway-irctc.p.rapidapi.com'
+        }
+    };
+
+
+    trainForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        console.log(e.target[0].value)
+        try {
+            const response = await fetch(url, options);
+            const result = await response.json();
+            const data = result.map(doc => {
+                return {
+                    id: doc.id,
+                    src: doc.source_name,
+                    dest: doc.destination_name
+                }
+            }).filter(doc => doc.id === e.target[0].value)
+
+            source.textContent = data[0].src;
+            destination.textContent = data[0].dest;
+
+
+        } catch (error) {
+            console.error(error);
+        }
+
+    })
+
+
+
+
+</script>
+
+</html>
